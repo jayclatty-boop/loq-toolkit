@@ -11,6 +11,9 @@
   <p>
     <b>Advanced control for Lenovo Legion, LOQ, and select IdeaPad Gaming laptops.<br>No telemetry. No bloat. Free and open source.</b>
   </p>
+  <p>
+    <b>Project expanded and maintained by <a href="https://github.com/jayclatty-boop">Jaycc Media</a></b>
+  </p>
 </div>
 
 ---
@@ -22,12 +25,13 @@
   <a href="#compatibility">Compatibility</a> •
   <a href="#faq">FAQ</a> •
   <a href="#contribution">Contribute</a>
+  • <a href="https://github.com/jayclatty-boop/loq-toolkit/releases/latest">Jaycc Media Releases</a>
 </p>
 
 ---
 
 > **Archived on July 24, 2025**  
-> This project is no longer actively maintained. Thank you to everyone who supported, used, and contributed! Feel free to fork and continue development.
+> This project is no longer actively maintained by the original author. It is now expanded and maintained by <b><a href="https://github.com/jayclatty-boop">Jaycc Media</a></b>. Thank you to everyone who supported, used, and contributed! Feel free to fork and continue development.
 
 ---
 
@@ -67,7 +71,8 @@ The following features are planned for future releases:
 
 ## 📦 Download
 
-**Latest Release:** [Releases page](https://github.com/BartoszCichecki/LenovoLegionToolkit/releases/latest)
+**Latest Release:** [Jaycc Media Releases](https://github.com/jayclatty-boop/loq-toolkit/releases/latest)  
+**Original Releases:** [Releases page](https://github.com/BartoszCichecki/LenovoLegionToolkit/releases/latest)
 
 **Install via [winget](https://github.com/microsoft/winget-cli):**
 
@@ -115,6 +120,8 @@ Special thanks to:
 - [SmokelessCPU](https://github.com/SmokelessCPU), for 4-zone RGB and Spectrum keyboard support
 - [Mario Bălănică](https://github.com/mariobalanica), [Ace-Radom](https://github.com/Ace-Radom), and all contributors
 
+**Project expansion, maintenance, and new releases by [Jaycc Media](https://github.com/jayclatty-boop)**
+
 Translations by:
 - Bulgarian: [Ekscentricitet](https://github.com/Ekscentricitet)
 - Chinese (Simplified): [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom)
@@ -151,4 +158,5 @@ Feedback and pull requests are welcome! Please check out [CONTRIBUTING.md](CONTR
 
 <div align="center">
   <sub>Not affiliated with Lenovo. For Legion, LOQ, and select IdeaPad Gaming laptops only.</sub>
+  <br><b>Maintained and expanded by <a href="https://github.com/jayclatty-boop">Jaycc Media</a></b>
 </div>
