@@ -77,15 +77,14 @@ The following features are planned for future releases:
 **Install via [winget](https://github.com/microsoft/winget-cli):**
 
 ```sh
-winget install BartoszCichecki.LenovoLegionToolkit
+winget install JayccMedia.LOQToolkit
 ```
 
 **Install via [Scoop](https://scoop.sh):**
 
 ```sh
-scoop bucket add versions
-scoop bucket add extras
-scoop install extras/lenovolegiontoolkit
+scoop bucket add jayccmedia https://github.com/jayclatty-boop/scoop-bucket.git
+scoop install jayccmedia/loqtoolkit
 ```
 
 > **Tip:** Looking for a Vantage alternative for Linux? Check out [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux).
