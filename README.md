@@ -1,4 +1,3 @@
-> [!IMPORTANT]
 > _Archived on July 24, 2025, This project is no longer actively maintained._
 > 
 > Thank you to everyone who supported, used, contributed to, and shared this project. It's been an amazing journey watching it grow among Legion users.
@@ -12,12 +11,97 @@
 > – Bartosz
 
 
-# Lenovo Legion Toolkit
 
-[![Build](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/BartoszCichecki/LenovoLegionToolkit/actions/workflows/build.yml)
-[![Crowdin](https://badges.crowdin.net/llt/localized.svg)](https://crowdin.com/project/llt)
-[![Join Discord](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
-<a href="https://hellogithub.com/repository/dd55be3ac0c146208259f17b29d2162f" target="_blank"><img src="https://abroad.hellogithub.com/v1/widgets/recommend.svg?rid=dd55be3ac0c146208259f17b29d2162f&claim_uid=LBbuUlZqTIm1JAP&theme=small" alt="Featured｜HelloGitHub" /></a>
+# LOQ Toolkit (formerly Lenovo Legion Toolkit)
+
+![Jaycc Media Logo](LenovoLegionToolkit.WPF/Assets/Logo/logo.png)
+
+**LOQ Toolkit** is a next-generation, open-source utility for Lenovo Legion, LOQ, and select IdeaPad Gaming laptops. Now proudly expanded and maintained by **Jaycc Media**, this project brings a modern Windows 11-inspired experience, advanced hardware control, and a commitment to privacy—no telemetry, no ads, just pure performance and customization.
+
+> [!IMPORTANT]
+> This project is not affiliated with Lenovo. Use at your own risk.
+
+---
+
+## 🚀 Project Expansion by Jaycc Media
+
+Jaycc Media is excited to announce the expansion and modernization of LOQ Toolkit! The project now features a Windows 11-inspired UI, enhanced installer, new gaming and system features, and a renewed focus on community-driven development. See the full update list below.
+
+---
+
+## 🆕 What's New (v1.0.0)
+
+### Major Updates
+
+- **Windows 11 UI Overhaul:** Modern, fluent design with Mica effect, new navigation, badges, and info bars
+- **Gaming Performance Analyzer:** Real-time game detection, thermal/power headroom, FPS prediction, and performance recommendations
+- **Enhanced Gaming Mode:** Background process optimization, RAM clearing, power mode switching, and real-time feedback
+- **Modern Installer:** Clean wizard interface, system integration, file associations, and multilingual support
+- **Expanded Hardware Controls:** Fan, battery, GPU, RGB, and more
+- **Community Expansion:** Now maintained and expanded by Jaycc Media
+
+---
+
+## 📦 Build Summary
+
+**Build Status:** SUCCESSFUL  
+**Date:** December 23, 2025  
+**Version:** 1.0.0
+
+### Build Artifacts
+| File | Size | Location |
+|------|------|----------|
+| `LOQToolkitSetup_1.0.0.exe` | 6.45 MB | `build_installer/` |
+| `LOQToolkitSetup.exe` | 6.41 MB | `build_installer/` |
+
+### Compiled Binaries
+- **LOQ Toolkit (Main App):** `build/LOQ Toolkit.exe`
+- **Spectrum Tester:** `build/SpectrumTester.dll`
+- **CLI Tool:** `build/loqt.exe`
+
+### Features Implemented
+- **Gaming Performance Analyzer** (new): Real-time game detection, thermal/power/FPS analysis, recommendations
+- **Gaming Mode Service** (enhanced): Process termination, RAM clearing, power switching, state persistence, feedback
+
+---
+
+## 🛠️ Installer Features
+
+- **Modern Wizard Interface:** Clean, contemporary design, 23 languages
+- **Installation Options:** Desktop icon, Quick Launch, system integration, startup
+- **System Integration:** File association, registry, context menu, Add/Remove Programs
+- **Installation Features:** LZMA2 compression, versioning, admin rights, 64-bit only
+- **Included Components:** Main app, Spectrum Tester, CLI tool, license
+- **Dependencies:** .NET 6 Desktop Runtime auto-install
+- **Paths:** AppData install, settings preserved on uninstall
+
+---
+
+## 💡 Features Overview
+
+LOQ Toolkit provides advanced control and monitoring for supported Lenovo laptops:
+
+- Power modes and plans (Quiet, Balance, Performance, Custom)
+- Fan and thermal management
+- Battery conservation and diagnostics
+- RGB lighting and profiles
+- GPU working modes and overclocking
+- Boot logo customization
+- Windows Power Plan integration
+- CLI for automation
+- Actions and scripting support
+- Multilingual UI
+- No telemetry, no ads
+
+---
+
+## 📖 Documentation & Support
+
+See [BUILD_SUMMARY_1.0.0.md](BUILD_SUMMARY_1.0.0.md) and [INSTALLER_FEATURES.md](INSTALLER_FEATURES.md) for full technical and installer details.
+
+For usage, troubleshooting, and advanced configuration, see the sections below and the in-app help.
+
+---
 
 ---
 
