@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Downloader;
+using LenovoLegionToolkit.WPF.Utils;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
@@ -43,7 +44,7 @@ public partial class ProgramDownloaderPage : Page
 
         foreach (var category in categories)
         {
-            var btn = new ui.Button
+            var btn = new Wpf.Ui.Controls.Button
             {
                 Content = category,
                 Margin = new Thickness(5),
@@ -57,7 +58,7 @@ public partial class ProgramDownloaderPage : Page
 
     private void CategoryButton_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is ui.Button btn && btn.Tag is string category)
+        if (sender is Wpf.Ui.Controls.Button btn && btn.Tag is string category)
         {
             _currentCategoryFilter = category;
             FilterPrograms();
@@ -153,33 +154,29 @@ public partial class ProgramDownloaderPage : Page
         stackPanel.Children.Add(sizeBlock);
 
         // Download Button
-        var downloadBtn = new ui.Button
+        var downloadBtn = new Wpf.Ui.Controls.Button
         {
             Content = "Download",
             HorizontalAlignment = HorizontalAlignment.Stretch,
             Tag = program,
-            Appearance = ui.ControlAppearance.Primary
+            Appearance = ControlAppearance.Primary
         };
         downloadBtn.Click += async (s, e) =>
         {
             try
             {
                 var result = await _downloadManager.DownloadProgramAsync(program);
-                await new ContentDialog
-                {
-                    Title = "Download Complete",
-                    Content = $"Downloaded to: {result}",
-                    PrimaryButtonText = "OK"
-                }.ShowAsync();
+                await SnackbarHelper.ShowAsync(
+                    "Download Complete",
+                    $"{program.Name} downloaded successfully",
+                    SnackbarType.Success);
             }
             catch (Exception ex)
             {
-                await new ContentDialog
-                {
-                    Title = "Download Failed",
-                    Content = ex.Message,
-                    PrimaryButtonText = "OK"
-                }.ShowAsync();
+                await SnackbarHelper.ShowAsync(
+                    "Download Failed",
+                    ex.Message,
+                    SnackbarType.Error);
             }
         };
         stackPanel.Children.Add(downloadBtn);
@@ -198,7 +195,8 @@ public partial class ProgramDownloaderPage : Page
         Dispatcher.Invoke(() =>
         {
             DownloadQueue.ItemsSource = _downloadManager.ActiveDownloads;
-            (DownloadQueue.Parent as Expander).Header = $"Downloads ({_downloadManager.ActiveDownloads.Count})";
+            if (DownloadQueue.Parent is Expander expander)
+                expander.Header = $"Downloads ({_downloadManager.ActiveDownloads.Count})";
         });
     }
 

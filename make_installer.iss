@@ -20,16 +20,20 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={userpf}\{#MyAppNameCompact}
-DisableProgramGroupPage=yes
+DisableProgramGroupPage=no
 LicenseFile=LICENSE
 PrivilegesRequired=admin
-OutputBaseFilename=LOQToolkitSetup
+OutputBaseFilename=LOQToolkitSetup_{#MyAppVersion}
 Compression=lzma2/ultra64  
 SolidCompression=yes
 WizardStyle=modern
 UninstallDisplayIcon={app}\{#MyAppExeName}
 OutputDir=build_installer
 ArchitecturesInstallIn64BitMode=x64
+VersionInfoVersion={#MyAppVersion}
+VersionInfoCompany={#MyAppPublisher}
+VersionInfoProductName={#MyAppName}
+VersionInfoProductVersion={#MyAppVersion}
 
 [Code]
 function InitializeSetup: Boolean;
@@ -66,23 +70,26 @@ Name: "vi";      MessagesFile: "InnoDependencies\Vietnamese.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "quicklaunch"; Description: "Create a &Quick Launch shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
+Name: "associate"; Description: "&Associate with system (register app)"; GroupDescription: "Integration"
+Name: "autostart"; Description: "&Run on startup (optional)"; GroupDescription: "Integration"; Flags: unchecked
 
 [Files]
 Source: "build\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "LICENSE"; DestDir: "{app}"; Flags: ignoreversion
+Source: "README.md"; DestDir: "{app}"; Flags: ignoreversion isreadme
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Comment: "Lenovo Legion Toolkit - Gaming & System Optimization"; WorkingDir: "{app}"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon; WorkingDir: "{app}"
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: quicklaunch; WorkingDir: "{app}"
 
 [InstallDelete]
 Type: filesandordirs; Name: "{app}"
 
-[Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: runascurrentuser nowait postinstall
-
-[UninstallDelete]
-Type: filesandordirs; Name: "{localappdata}\{#MyAppNameCompact}"
-
-[UninstallRun]
-RunOnceId: "DelAutorun"; Filename: "schtasks"; Parameters: "/Delete /TN ""LOQToolkit_Autorun_8d2f4b7e-5a1c-4e9d-b6f3-9c8e7d4a2b1f"" /F"; Flags: runhidden 
+[Registry]
+Root: "HKLM"; Subkey: "Software\Classes\.loqt"; ValueType: string; ValueName: ""; ValueData: "{#MyAppNameCompact}"; Tasks: associate; Flags: createvalueifdoesntexist
+Root: "HKLM"; Subkey: "Software\Classes\{#MyAppNameCompact}"; ValueType: string; ValueName: ""; ValueData: "{#MyAppName} File"; Tasks: associate; Flags: createvalueifdoesntexist
+Root: "HKLM"; Subkey: "Software\Classes\{#MyAppNameCompact}\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\{#MyAppExeName},0"; Tasks: associate
+Root: "HKLM"; Subkey: "Software\Classes\{#MyAppNameCompact}\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\{#MyAppExeName}"" ""%1"""; Tasks: associate
+Root: "HKCU"; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "{#MyAppName}"; ValueData: "{app}\{#MyAppExeName}"; Tasks: autostart; Flags: createvalueifdoesntexist

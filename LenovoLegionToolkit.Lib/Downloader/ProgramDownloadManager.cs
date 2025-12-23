@@ -13,7 +13,7 @@ public class ProgramDownloadManager
     private readonly HttpClient _httpClient;
     private readonly string _downloadFolder;
     private readonly Dictionary<string, DownloadItem> _activeDownloads = new();
-    private CancellationTokenSource? _cancellationTokenSource;
+    private CancellationTokenSource _cancellationTokenSource = new();
 
     public event EventHandler<DownloadItem>? ProgressChanged;
     public event EventHandler<DownloadItem>? DownloadCompleted;
@@ -24,7 +24,7 @@ public class ProgramDownloadManager
     public ProgramDownloadManager(string downloadFolder = "")
     {
         _downloadFolder = string.IsNullOrEmpty(downloadFolder) 
-            ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Downloads), "LOQToolkit")
+            ? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", "LOQToolkit")
             : downloadFolder;
 
         if (!Directory.Exists(_downloadFolder))

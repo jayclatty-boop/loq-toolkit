@@ -198,7 +198,7 @@ public partial class DebloaterPage : UiPage
                     if (tweak.Severity == DebloatSeverity.Dangerous && _settings.Store.LockDangerousTweaks && toggle.IsChecked == true)
                     {
                         toggle.IsChecked = false;
-                        SnackbarHelper.ShowAsync("Dangerous tweaks locked", "Dangerous tweaks are currently locked. Unlock them in settings first.");
+                        _ = SnackbarHelper.ShowAsync("Dangerous tweaks locked", "Dangerous tweaks are currently locked. Unlock them in settings first.");
                         return;
                     }
 

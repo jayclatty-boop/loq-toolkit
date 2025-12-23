@@ -73,10 +73,11 @@
 
         </Grid>
 
+        <!-- Windows 11 style content area with improved spacing -->
         <Grid
             x:Name="_contentGrid"
             Grid.Row="1"
-            Margin="12,6,0,0">
+            Margin="8,8,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
@@ -90,11 +91,19 @@
                 SelectedPageIndex="0">
 
                 <wpfui:NavigationStore.Items>
+                    <!-- Core Section -->
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Dashboard}"
                         Icon="Home24"
                         PageTag="dashboard"
                         PageType="{x:Type pages:DashboardPage}" />
+                    <custom:NavigationItem
+                        Content="System Info"
+                        Icon="DesktopPulse24"
+                        PageTag="systemInfo"
+                        PageType="{x:Type pages:SystemInfoPage}" />
+                    
+                    <!-- Hardware Section -->
                     <custom:NavigationItem
                         x:Name="_keyboardItem"
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Keyboard}"
@@ -106,6 +115,8 @@
                         Icon="BatteryCheckmark24"
                         PageTag="battery"
                         PageType="{x:Type pages:BatteryPage}" />
+                    
+                    <!-- Automation Section -->
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Actions}"
                         Icon="Rocket24"
@@ -116,31 +127,23 @@
                         Icon="ReceiptPlay24"
                         PageTag="macro"
                         PageType="{x:Type pages:MacroPage}" />
+                    
+                    <!-- Tools Section -->
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Packages}"
                         Icon="Box24"
                         PageTag="packages"
                         PageType="{x:Type pages:PackagesPage}" />
                     <custom:NavigationItem
-                        Content="System Info"
-                        Icon="Info24"
-                        PageTag="systemInfo"
-                        PageType="{x:Type pages:SystemInfoPage}" />
-                    <custom:NavigationItem
-                        Content="Debloater"
-                        Icon="Delete24"
-                        PageTag="debloater"
-                        PageType="{x:Type pages:DebloaterPage}" />
-                    <custom:NavigationItem
                         Content="Program Downloader"
-                        Icon="Download24"
+                        Icon="CloudArrowDown24"
                         PageTag="programDownloader"
                         PageType="{x:Type pages:ProgramDownloaderPage}" />
                     <custom:NavigationItem
-                        Content="OS Downloader"
-                        Icon="CompactDisk24"
-                        PageTag="osDownloader"
-                        PageType="{x:Type pages:OSDownloaderPage}" />
+                        Content="Debloater"
+                        Icon="AppGeneric24"
+                        PageTag="debloater"
+                        PageType="{x:Type pages:DebloaterPage}" />
                 </wpfui:NavigationStore.Items>
 
                 <wpfui:NavigationStore.Footer>
@@ -163,11 +166,12 @@
 
             </wpfui:NavigationStore>
 
+            <!-- Windows 11 style content area with rounded corners -->
             <Border
                 Grid.Column="1"
                 Background="{DynamicResource ControlFillColorDefaultBrush}"
-                CornerRadius="8,0,0,0">
-                <Frame Name="_rootFrame" Margin="24,0,0,0" />
+                CornerRadius="12,0,0,0">
+                <Frame Name="_rootFrame" Margin="28,0,0,0" />
             </Border>
 
             <wpfui:Snackbar
@@ -251,20 +255,23 @@
             </StackPanel>
         </Border>
 
+        <!-- Windows 11 style update indicator with rounded bottom corners -->
         <Border
             x:Name="_updateIndicator"
             Grid.Row="5"
-            Padding="8,4,8,6"
-            Background="{DynamicResource SystemFillColorCautionBrush}"
+            Padding="12,6,12,8"
+            Background="#505050"
             Cursor="Hand"
             MouseLeftButtonDown="UpdateIndicator_Click"
             MouseRightButtonDown="UpdateIndicator_Click"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <wpfui:SymbolIcon Margin="0,0,4,0" Symbol="Info24" />
+                <wpfui:SymbolIcon Margin="0,0,8,0" Foreground="White" Symbol="Info24" />
                 <TextBlock
                     x:Name="_updateIndicatorText"
                     Focusable="True"
+                    Foreground="White"
+                    FontSize="13"
                     KeyDown="UpdateIndicator_KeyDown"
                     Text="Check GitHub for updates" />
             </StackPanel>

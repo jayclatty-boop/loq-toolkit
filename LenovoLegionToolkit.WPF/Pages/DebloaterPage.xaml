@@ -56,9 +56,34 @@
                 <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                     <wpfui:SymbolIcon Symbol="Search24" Margin="0,0,8,0" VerticalAlignment="Center" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,8,0" Text="Search:" />
-                    <TextBox x:Name="_searchBox" MinWidth="300" Margin="0,0,12,0" TextChanged="SearchBox_TextChanged" />
+                    <wpfui:TextBox x:Name="_searchBox" MinWidth="300" Margin="0,0,12,0" TextChanged="SearchBox_TextChanged" />
                     <wpfui:Button Content="Refresh Status" Icon="ArrowSync24" Appearance="Secondary" Click="RefreshStatusButton_Click" />
                 </StackPanel>
+
+                <Grid Margin="0,12,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="_statusText" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+
+                    <wpfui:Button
+                        x:Name="_undoButton"
+                        Grid.Column="1"
+                        Margin="0,0,8,0"
+                        Appearance="Secondary"
+                        Content="Undo Selected"
+                        Click="UndoButton_Click" />
+
+                    <wpfui:Button
+                        x:Name="_applyButton"
+                        Grid.Column="2"
+                        Appearance="Success"
+                        Content="Apply Selected"
+                        Click="ApplyButton_Click" />
+                </Grid>
             </StackPanel>
         </custom:CardControl>
 
@@ -80,31 +105,6 @@
                 </ScrollViewer>
             </StackPanel>
         </custom:CardControl>
-
-        <Grid Margin="0,12,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <TextBlock x:Name="_statusText" Grid.Column="0" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-
-            <wpfui:Button
-                x:Name="_undoButton"
-                Grid.Column="1"
-                Margin="0,0,8,0"
-                Appearance="Secondary"
-                Content="Undo Selected"
-                Click="UndoButton_Click" />
-
-            <wpfui:Button
-                x:Name="_applyButton"
-                Grid.Column="2"
-                Appearance="Primary"
-                Content="Apply Selected"
-                Click="ApplyButton_Click" />
-        </Grid>
 
     </StackPanel>
 </wpfui:UiPage>

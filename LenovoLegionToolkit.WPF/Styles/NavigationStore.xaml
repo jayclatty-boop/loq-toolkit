@@ -7,19 +7,20 @@
 
     <!--  ReSharper disable Xaml.StaticResourceNotResolved  -->
 
+    <!-- Windows 11 Style Navigation Item -->
     <Style x:Key="NavigationStoreItem" TargetType="{x:Type controls:NavigationItem}">
-        <Setter Property="MinWidth" Value="60" />
-        <Setter Property="MaxWidth" Value="80" />
-        <Setter Property="MinHeight" Value="60" />
-        <Setter Property="Margin" Value="0,0,0,4" />
+        <Setter Property="MinWidth" Value="72" />
+        <Setter Property="MaxWidth" Value="88" />
+        <Setter Property="MinHeight" Value="64" />
+        <Setter Property="Margin" Value="4,2,4,2" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="IconSize" Value="24" />
+        <Setter Property="IconSize" Value="22" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Background">
             <Setter.Value>
-                <SolidColorBrush Color="{DynamicResource ControlFillColorDefault}" />
+                <SolidColorBrush Color="Transparent" />
             </Setter.Value>
         </Setter>
         <Setter Property="Foreground">
@@ -48,27 +49,27 @@
                 <ControlTemplate TargetType="{x:Type controls:NavigationItem}">
                     <Border
                         x:Name="MainBorder"
-                        Padding="4"
+                        Padding="6"
                         HorizontalAlignment="Stretch"
                         Background="Transparent"
                         BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="4">
+                        BorderThickness="0"
+                        CornerRadius="8">
                         <Grid>
-                            <Rectangle
-                                x:Name="ActiveRectangle"
-                                Width="4"
-                                Height="24"
-                                Margin="-4,0,0,0"
+                            <!-- Windows 11 pill-shaped active indicator -->
+                            <Border
+                                x:Name="ActiveIndicator"
+                                Width="3"
+                                Height="16"
+                                Margin="-6,0,0,0"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Opacity="0.0"
-                                RadiusX="2"
-                                RadiusY="2">
-                                <Rectangle.Fill>
+                                CornerRadius="2">
+                                <Border.Background>
                                     <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
-                                </Rectangle.Fill>
-                            </Rectangle>
+                                </Border.Background>
+                            </Border>
                             <Grid HorizontalAlignment="Stretch">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*" />
@@ -85,7 +86,7 @@
                                 <Image
                                     x:Name="ElementImage"
                                     Grid.Row="0"
-                                    Width="24"
+                                    Width="22"
                                     Margin="0"
                                     RenderOptions.BitmapScalingMode="HighQuality"
                                     Source="{TemplateBinding Image}" />
@@ -93,7 +94,7 @@
                                 <Grid
                                     x:Name="ContentGrid"
                                     Grid.Row="1"
-                                    Margin="0,2,0,0">
+                                    Margin="0,4,0,0">
                                     <ContentPresenter x:Name="ElementContentPresenter" HorizontalAlignment="Center">
                                         <ContentPresenter.Content>
                                             <TextBlock
@@ -111,11 +112,11 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsActive" Value="True">
-                            <Setter TargetName="ActiveRectangle" Property="Opacity" Value="1.0" />
+                            <Setter TargetName="ActiveIndicator" Property="Opacity" Value="1.0" />
                             <Setter TargetName="ElementIcon" Property="Filled" Value="True" />
                             <Setter TargetName="MainBorder" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource ControlFillColorDefault}" />
+                                    <SolidColorBrush Opacity="0.08" Color="{DynamicResource TextFillColorPrimary}" />
                                 </Setter.Value>
                             </Setter>
                             <Setter TargetName="ElementIcon" Property="Foreground">
@@ -132,19 +133,27 @@
                                             Storyboard.TargetProperty="MaxHeight"
                                             From="30"
                                             To="0"
-                                            Duration="0:0:.16" />
+                                            Duration="0:0:.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                         <DoubleAnimation
                                             Storyboard.TargetName="ContentGrid"
                                             Storyboard.TargetProperty="Opacity"
                                             From="1"
                                             To="0"
-                                            Duration="0:0:.16" />
+                                            Duration="0:0:.15" />
                                         <DoubleAnimation
-                                            Storyboard.TargetName="MainBorder"
-                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Opacity)"
+                                            Storyboard.TargetName="ActiveIndicator"
+                                            Storyboard.TargetProperty="Height"
                                             From="0"
-                                            To="1"
-                                            Duration="0:0:.16" />
+                                            To="16"
+                                            Duration="0:0:.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -156,19 +165,23 @@
                                             Storyboard.TargetProperty="MaxHeight"
                                             From="0"
                                             To="30"
-                                            Duration="0:0:.16" />
+                                            Duration="0:0:.2">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
                                         <DoubleAnimation
                                             Storyboard.TargetName="ContentGrid"
                                             Storyboard.TargetProperty="Opacity"
                                             From="0"
                                             To="1"
-                                            Duration="0:0:.16" />
+                                            Duration="0:0:.2" />
                                         <DoubleAnimation
-                                            Storyboard.TargetName="MainBorder"
-                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Opacity)"
-                                            From="1"
+                                            Storyboard.TargetName="ActiveIndicator"
+                                            Storyboard.TargetProperty="Height"
+                                            From="16"
                                             To="0"
-                                            Duration="0:0:.16" />
+                                            Duration="0:0:.15" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -182,7 +195,7 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="MainBorder" Property="Background">
                                 <Setter.Value>
-                                    <SolidColorBrush Opacity="0.5" Color="{DynamicResource ControlFillColorDefault}" />
+                                    <SolidColorBrush Opacity="0.06" Color="{DynamicResource TextFillColorPrimary}" />
                                 </Setter.Value>
                             </Setter>
                         </Trigger>
@@ -212,8 +225,8 @@
 
     <Style TargetType="{x:Type controls:NavigationStore}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="MinWidth" Value="60" />
-        <Setter Property="MaxWidth" Value="80" />
+        <Setter Property="MinWidth" Value="72" />
+        <Setter Property="MaxWidth" Value="88" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -232,8 +245,8 @@
 
                             <ItemsControl
                                 Grid.Row="0"
-                                MinWidth="60"
-                                MaxWidth="80"
+                                MinWidth="72"
+                                MaxWidth="88"
                                 Focusable="False"
                                 ItemsSource="{TemplateBinding Items}"
                                 KeyboardNavigation.DirectionalNavigation="Contained"

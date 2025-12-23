@@ -5,6 +5,7 @@
 
     <!--  ReSharper disable Xaml.StaticResourceNotResolved  -->
 
+    <!-- Windows 11 Style Badge with pill shape -->
     <Style TargetType="{x:Type custom:Badge}">
         <Setter Property="Foreground">
             <Setter.Value>
@@ -17,7 +18,7 @@
             </Setter.Value>
         </Setter>
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Padding" Value="4" />
+        <Setter Property="Padding" Value="10,4,10,4" />
         <Setter Property="Focusable" Value="False" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -30,7 +31,7 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1"
-                        CornerRadius="4">
+                        CornerRadius="12">
                         <ContentPresenter />
                     </Border>
                     <ControlTemplate.Triggers>

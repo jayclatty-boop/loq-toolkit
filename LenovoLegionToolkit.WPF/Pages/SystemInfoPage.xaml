@@ -9,22 +9,22 @@
     FlowDirection="{x:Static utils:LocalizationHelper.Direction}"
     Scrollable="True">
 
-    <StackPanel Margin="0,0,16,12">
-        <!-- Page Title -->
+    <StackPanel Margin="0,0,20,16">
+        <!-- Page Title - Windows 11 Style -->
         <TextBlock
-            Margin="0,16,0,24"
+            Margin="0,24,0,28"
             Focusable="True"
-            FontSize="24"
-            FontWeight="Medium"
+            FontSize="28"
+            FontWeight="SemiBold"
             Text="System Info" />
 
-        <!-- LOQ Warning Banner (shown when not a LOQ device) -->
+        <!-- LOQ Warning Banner (shown when not a LOQ device) - Windows 11 Style -->
         <Border
             x:Name="_loqWarningBanner"
-            Margin="0,0,0,16"
-            Padding="12"
+            Margin="0,0,0,20"
+            Padding="16,12,16,12"
             Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
-            CornerRadius="4"
+            CornerRadius="12"
             Visibility="Collapsed">
             <StackPanel Orientation="Horizontal">
                 <wpfui:SymbolIcon
@@ -39,22 +39,24 @@
             </StackPanel>
         </Border>
 
-        <!-- Device Information Section -->
+        <!-- Device Information Section - Windows 11 Style -->
         <TextBlock
-            Padding="0,0,0,12"
+            Padding="0,0,0,16"
             Focusable="True"
-            FontSize="16"
-            FontWeight="Medium"
+            FontSize="18"
+            FontWeight="SemiBold"
             Text="Device Information" />
 
         <Border
             Margin="0,0,0,24"
-            Padding="16"
+            Padding="20,16,20,16"
             Background="{DynamicResource ControlFillColorDefaultBrush}"
-            CornerRadius="8">
+            BorderBrush="{DynamicResource ControlElevationBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" MinWidth="150" />
+                    <ColumnDefinition Width="Auto" MinWidth="160" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -67,7 +69,7 @@
                 <TextBlock
                     Grid.Row="0"
                     Grid.Column="0"
-                    Margin="0,0,0,8"
+                    Margin="0,0,0,10"
                     Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                     Text="Model" />
                 <TextBlock
@@ -120,23 +122,25 @@
             </Grid>
         </Border>
 
-        <!-- GPU Information Section -->
+        <!-- GPU Information Section - Windows 11 Style -->
         <TextBlock
-            Padding="0,0,0,12"
+            Padding="0,0,0,16"
             Focusable="True"
-            FontSize="16"
-            FontWeight="Medium"
+            FontSize="18"
+            FontWeight="SemiBold"
             Text="GPU Information" />
 
         <Border
-            Margin="0,0,0,8"
-            Padding="16"
+            Margin="0,0,0,12"
+            Padding="20,16,20,16"
             Background="{DynamicResource ControlFillColorDefaultBrush}"
-            CornerRadius="8">
+            BorderBrush="{DynamicResource ControlElevationBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12">
             <StackPanel>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" MinWidth="150" />
+                        <ColumnDefinition Width="Auto" MinWidth="160" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
@@ -153,13 +157,15 @@
             </StackPanel>
         </Border>
 
-        <!-- GPU Real-time Monitoring Dashboard -->
+        <!-- GPU Real-time Monitoring Dashboard - Windows 11 Style -->
         <Border
             x:Name="_monitoringCard"
             Margin="0,0,0,24"
-            Padding="16"
+            Padding="20,16,20,16"
             Background="{DynamicResource ControlFillColorDefaultBrush}"
-            CornerRadius="8"
+            BorderBrush="{DynamicResource ControlElevationBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12"
             Visibility="Collapsed">
             <StackPanel>
                 <Grid Margin="0,0,0,16">
@@ -245,7 +251,7 @@
                     <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="8" Margin="4" 
                             x:Name="_tempWarningBorder"
                             Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
-                            CornerRadius="4"
+                            CornerRadius="8"
                             Visibility="Collapsed">
                         <StackPanel Orientation="Horizontal">
                             <wpfui:SymbolIcon Symbol="Warning24" Margin="0,0,8,0" 
@@ -258,22 +264,24 @@
             </StackPanel>
         </Border>
 
-        <!-- GPU Stability Testing Section -->
+        <!-- GPU Stability Testing Section - Windows 11 Style -->
         <TextBlock
             x:Name="_stabilityTestingHeader"
-            Padding="0,0,0,8"
+            Padding="0,0,0,12"
             Focusable="True"
-            FontSize="16"
-            FontWeight="Medium"
+            FontSize="18"
+            FontWeight="SemiBold"
             Text="Stability Testing"
             Visibility="Collapsed" />
 
         <Border
             x:Name="_stabilityTestingCard"
             Margin="0,0,0,24"
-            Padding="16"
+            Padding="20,16,20,16"
             Background="{DynamicResource ControlFillColorDefaultBrush}"
-            CornerRadius="8"
+            BorderBrush="{DynamicResource ControlElevationBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12"
             Visibility="Collapsed">
             <StackPanel>
                 <TextBlock
@@ -314,7 +322,7 @@
                     Margin="0,16,0,0"
                     Padding="12"
                     Background="{DynamicResource ControlFillColorSecondaryBrush}"
-                    CornerRadius="4"
+                    CornerRadius="8"
                     Visibility="Collapsed">
                     <StackPanel>
                         <TextBlock x:Name="_testStatusText" FontWeight="Medium" Margin="0,0,0,8" Text="Running stability test..." />
@@ -335,7 +343,7 @@
                     Margin="0,16,0,0"
                     Padding="12"
                     Background="{DynamicResource ControlFillColorDefaultBrush}"
-                    CornerRadius="4">
+                    CornerRadius="8">
                     <StackPanel>
                         <TextBlock FontWeight="Medium" Margin="0,0,0,8" Text="Safety Settings" />
                         <Grid>
@@ -378,12 +386,12 @@
             </StackPanel>
         </Border>
 
-        <!-- GPU Overclock Recommendations Section -->
+        <!-- GPU Overclock Recommendations Section - Windows 11 Style -->
         <TextBlock
-            Padding="0,0,0,8"
+            Padding="0,0,0,12"
             Focusable="True"
-            FontSize="16"
-            FontWeight="Medium"
+            FontSize="18"
+            FontWeight="SemiBold"
             Text="Recommended GPU Overclocks" />
         <TextBlock
             Margin="0,0,0,16"
@@ -397,7 +405,7 @@
             Margin="0,0,0,16"
             Padding="12"
             Background="{DynamicResource ControlFillColorDefaultBrush}"
-            CornerRadius="4"
+            CornerRadius="8"
             Visibility="Collapsed">
             <StackPanel Orientation="Horizontal">
                 <wpfui:SymbolIcon
@@ -420,6 +428,399 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
+
+        <!-- Gaming & Maintenance Section - Windows 11 Style -->
+        <TextBlock
+            Padding="0,0,0,16"
+            Focusable="True"
+            FontSize="18"
+            FontWeight="SemiBold"
+            Text="Gaming and System Optimization" />
+
+        <!-- Gaming Mode Card - Windows 11 Style -->
+        <Border
+            Margin="0,0,0,16"
+            Padding="20,16,20,16"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            BorderBrush="{DynamicResource ControlElevationBorderBrush}"
+            BorderThickness="1"
+            CornerRadius="12">
+            <StackPanel>
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Margin="0,0,0,8"
+                    Text="Gaming Mode" />
+                <TextBlock
+                    Margin="0,0,0,12"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                    Text="One-click optimization: kills background apps, clears RAM, and switches to performance mode."
+                    TextWrapping="Wrap" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        x:Name="_gamingModeStatusText"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                        Text="Status: Inactive" />
+                    <wpfui:Button
+                        x:Name="_enableGamingModeButton"
+                        Grid.Column="1"
+                        Content="Enable Gaming Mode"
+                        Icon="Play24"
+                        Appearance="Primary"
+                        Click="EnableGamingModeButton_Click" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- RAM Optimizer Card -->
+        <Border
+            Margin="0,0,0,16"
+            Padding="16"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            CornerRadius="12">
+            <StackPanel>
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Margin="0,0,0,8"
+                    Text="Memory Optimizer" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Grid.Column="0" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Total Memory" />
+                        <TextBlock x:Name="_totalMemoryText" FontSize="16" FontWeight="Medium" Text="-- GB" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="1" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Available" />
+                        <TextBlock x:Name="_availableMemoryText" FontSize="16" FontWeight="Medium" Text="-- GB" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="2" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Usage" />
+                        <TextBlock x:Name="_memoryUsageText" FontSize="16" FontWeight="Medium" Text="-- %" />
+                    </StackPanel>
+                </Grid>
+                <wpfui:Button
+                    x:Name="_clearMemoryButton"
+                    Margin="0,8,0,0"
+                    Content="Clear Memory"
+                    Icon="Broom24"
+                    Appearance="Secondary"
+                    HorizontalAlignment="Stretch"
+                    Click="ClearMemoryButton_Click" />
+            </StackPanel>
+        </Border>
+
+        <!-- Gaming Performance Analyzer Card -->
+        <Border
+            Margin="0,0,0,16"
+            Padding="16"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            CornerRadius="12">
+            <StackPanel>
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Margin="0,0,0,8"
+                    Text="Gaming Performance Analyzer" />
+                <TextBlock
+                    Margin="0,0,0,12"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                    Text="Detects running games and predicts sustainable FPS based on thermal and power headroom."
+                    TextWrapping="Wrap" />
+
+                <!-- Game Detection Status -->
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center">
+                        <Run Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Detected Game: " />
+                        <Run x:Name="_detectedGameText" FontWeight="Medium" Text="Rocket League" />
+                        <Run x:Name="_exampleIndicator" Foreground="{DynamicResource TextFillColorTertiaryBrush}" FontStyle="Italic" Text=" (Example)" />
+                    </TextBlock>
+                    <wpfui:Button
+                        x:Name="_refreshGameDetectionButton"
+                        Grid.Column="1"
+                        Content="Refresh"
+                        Icon="ArrowSync24"
+                        Appearance="Secondary"
+                        Click="RefreshGameDetectionButton_Click" />
+                </Grid>
+
+                <!-- Performance Metrics Grid -->
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Thermal Headroom -->
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,8,8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Thermal Headroom" />
+                        <ProgressBar x:Name="_thermalHeadroomBar" Height="4" Margin="0,4,0,0" />
+                        <TextBlock x:Name="_thermalHeadroomText" FontSize="14" FontWeight="Medium" Text="-- %" />
+                    </StackPanel>
+
+                    <!-- Power Headroom -->
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="8,0,0,8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Power Headroom" />
+                        <ProgressBar x:Name="_powerHeadroomBar" Height="4" Margin="0,4,0,0" />
+                        <TextBlock x:Name="_powerHeadroomText" FontSize="14" FontWeight="Medium" Text="-- %" />
+                    </StackPanel>
+
+                    <!-- GPU Temperature -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,8,0">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="GPU Temperature" />
+                        <TextBlock x:Name="_performanceGpuTempText" FontSize="14" FontWeight="Medium" Text="-- °C" />
+                    </StackPanel>
+
+                    <!-- Sustainable FPS -->
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="8,0,0,0">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Est. Sustainable FPS" />
+                        <TextBlock x:Name="_sustainableFpsText" FontSize="14" FontWeight="Medium" Text="--" />
+                    </StackPanel>
+                </Grid>
+
+                <!-- Performance Profile Badge -->
+                <Border x:Name="_performanceProfileBorder" Margin="0,0,0,12" Padding="12,8" CornerRadius="8">
+                    <TextBlock x:Name="_performanceProfileText" Text="Profile: --" FontWeight="Medium" />
+                </Border>
+
+                <!-- FPS Predictions -->
+                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Margin="0,0,0,8" Text="FPS Predictions by Quality:" />
+                <StackPanel x:Name="_fpsPredictionsPanel" Margin="0,0,0,12" />
+
+                <!-- Preset Recommendation -->
+                <Border Padding="12,8" CornerRadius="8" Background="{DynamicResource ControlFillColorDefaultBrush}" BorderBrush="{DynamicResource ControlElevationBorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Preset Recommendation" />
+                        <TextBlock x:Name="_presetRecommendationText" FontSize="12" FontWeight="Medium" Text="-- " TextWrapping="Wrap" Margin="0,4,0,0" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Battery Diagnostics Card -->
+        <Border
+            Margin="0,0,0,16"
+            Padding="16"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            CornerRadius="12">
+            <StackPanel>
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Margin="0,0,0,12"
+                    Text="Battery Diagnostics" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Battery Health" />
+                        <TextBlock x:Name="_batteryHealthText" FontSize="16" FontWeight="Medium" Text="-- %" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Cycle Count" />
+                        <TextBlock x:Name="_batteryCycleText" FontSize="16" FontWeight="Medium" Text="--" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Temperature" />
+                        <TextBlock x:Name="_batteryTempText" FontSize="16" FontWeight="Medium" Text="-- °C" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Design Capacity" />
+                        <TextBlock x:Name="_batteryDesignCapacityText" FontSize="12" Text="-- mWh" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1" Grid.Column="1" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Full Charge Capacity" />
+                        <TextBlock x:Name="_batteryFullChargeText" FontSize="12" Text="-- mWh" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1" Grid.Column="2" Margin="8">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="11" Text="Charge Rate" />
+                        <TextBlock x:Name="_batteryChargeRateText" FontSize="12" Text="-- W" />
+                    </StackPanel>
+                </Grid>
+
+                <Border
+                    x:Name="_batteryWarningBorder"
+                    Margin="0,12,0,0"
+                    Padding="12,8"
+                    Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
+                    CornerRadius="12"
+                    Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <wpfui:SymbolIcon Symbol="Warning24" Margin="0,0,8,0" 
+                                        Foreground="{DynamicResource SystemFillColorCautionBrush}" />
+                        <TextBlock x:Name="_batteryWarningText" TextWrapping="Wrap" 
+                                 Text="Battery health is degraded. Consider replacement." />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+        <!-- Fan Control Panel -->
+        <Border
+            Margin="0,0,0,16"
+            Padding="16"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            CornerRadius="12">
+            <StackPanel>
+                <TextBlock
+                    FontSize="14"
+                    FontWeight="Medium"
+                    Margin="0,0,0,8"
+                    Text="Fan Control" />
+                <TextBlock
+                    Margin="0,0,0,12"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                    Text="Quick fan presets for different scenarios."
+                    TextWrapping="Wrap" />
+                    
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" MinWidth="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                        Text="Fan Speed:" />
+                    <TextBlock
+                        x:Name="_fanSpeedText"
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        FontWeight="Medium"
+                        Text="-- RPM" />
+                </Grid>
+
+                <Grid Margin="0,12,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <wpfui:Button
+                        x:Name="_fanSilentButton"
+                        Grid.Column="0"
+                        Margin="0,0,4,0"
+                        Content="Silent"
+                        Icon="Sleep24"
+                        Appearance="Secondary"
+                        Click="FanSilentButton_Click" />
+                    <wpfui:Button
+                        x:Name="_fanBalancedButton"
+                        Grid.Column="1"
+                        Margin="4,0,4,0"
+                        Content="Balanced"
+                        Icon="Gauge24"
+                        Appearance="Secondary"
+                        Click="FanBalancedButton_Click" />
+                    <wpfui:Button
+                        x:Name="_fanMaxButton"
+                        Grid.Column="2"
+                        Margin="4,0,0,0"
+                        Content="Max"
+                        Icon="TopSpeed24"
+                        Appearance="Secondary"
+                        Click="FanMaxButton_Click" />
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Storage Health Card -->
+        <Border
+            Margin="0,0,0,16"
+            Padding="16"
+            Background="{DynamicResource ControlFillColorDefaultBrush}"
+            CornerRadius="12">
+            <StackPanel>
+                <Grid Margin="0,0,0,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Text="Storage Health" />
+                    <wpfui:Button
+                        x:Name="_refreshStorageButton"
+                        Grid.Column="1"
+                        Content="Refresh"
+                        Icon="ArrowClockwise24"
+                        Appearance="Secondary"
+                        Click="RefreshStorageButton_Click" />
+                </Grid>
+                <ItemsControl x:Name="_storageItemsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Margin="0,0,0,8" Padding="12,8" Background="{DynamicResource ControlFillColorSecondaryBrush}" CornerRadius="8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock FontWeight="Medium" Text="{Binding Model}" />
+                                        <TextBlock FontSize="11" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{Binding DeviceName}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Margin="12,0">
+                                        <TextBlock FontSize="11" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Health" />
+                                        <TextBlock FontWeight="Medium" Text="{Binding HealthPercentage}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Margin="12,0">
+                                        <TextBlock FontSize="11" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Temp" />
+                                        <TextBlock FontWeight="Medium" Text="{Binding TemperatureC}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="3" Margin="12,0">
+                                        <TextBlock FontSize="11" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Type" />
+                                        <TextBlock FontWeight="Medium" Text="{Binding MediaType}" />
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
 
     </StackPanel>
 </wpfui:UiPage>

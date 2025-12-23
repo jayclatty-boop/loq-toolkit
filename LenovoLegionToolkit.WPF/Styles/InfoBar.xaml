@@ -6,9 +6,11 @@
 
     <!--  ReSharper disable Xaml.StaticResourceNotResolved  -->
 
-    <Thickness x:Key="InfoBarPadding">14,8,14,8</Thickness>
+    <!-- Windows 11 Style InfoBar Padding -->
+    <Thickness x:Key="InfoBarPadding">16,12,16,12</Thickness>
     <Thickness x:Key="InfoBarBorderThemeThickness">1</Thickness>
 
+    <!-- Windows 11 Style InfoBar -->
     <Style TargetType="{x:Type custom:InfoBar}">
         <Setter Property="Background">
             <Setter.Value>
@@ -29,7 +31,7 @@
         <Setter Property="BorderThickness" Value="{StaticResource InfoBarBorderThemeThickness}" />
         <Setter Property="FontSize" Value="{DynamicResource ControlContentThemeFontSize}" />
         <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="Border.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+        <Setter Property="Border.CornerRadius" Value="8" />
         <Setter Property="Focusable" Value="True" />
         <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -40,7 +42,7 @@
                     <Grid x:Name="InfoBarRoot">
                         <Border
                             x:Name="ContentBorder"
-                            Padding="16,14,16,10"
+                            Padding="20,16,20,14"
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalAlignment}"
                             Background="{TemplateBinding Background}"
@@ -53,17 +55,17 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Border Margin="0,2,14,0" VerticalAlignment="Top">
+                                <Border Margin="0,2,16,0" VerticalAlignment="Top">
                                     <controls:SymbolIcon
                                         x:Name="SymbolIcon"
                                         VerticalAlignment="Top"
                                         Filled="True"
-                                        FontSize="16" />
+                                        FontSize="18" />
                                 </Border>
 
                                 <WrapPanel Grid.Column="1" VerticalAlignment="Top">
                                     <TextBlock
-                                        Margin="0,0,14,0"
+                                        Margin="0,0,16,0"
                                         ScrollViewer.CanContentScroll="False"
                                         Text="{TemplateBinding Title}"
                                         TextElement.FontSize="{TemplateBinding FontSize}"
@@ -84,7 +86,7 @@
                                     VerticalAlignment="Top">
                                     <controls:Button
                                         x:Name="CloseButton"
-                                        Padding="4"
+                                        Padding="6"
                                         Background="Transparent"
                                         BorderThickness="0"
                                         Command="{Binding Path=TemplateButtonCommand, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"

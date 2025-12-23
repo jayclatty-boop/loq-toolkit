@@ -1,3 +1,5 @@
+using System;
+
 namespace LenovoLegionToolkit.Lib.Downloader;
 
 public enum WindowsEditionType
