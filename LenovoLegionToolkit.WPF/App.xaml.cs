@@ -1,4 +1,4 @@
-﻿#if !DEBUG
+#if !DEBUG
 using LenovoLegionToolkit.Lib.System;
 #endif
 using System;
@@ -71,6 +71,22 @@ public partial class App
 
         AppDomain.CurrentDomain.UnhandledException += AppDomain_UnhandledException;
 
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "A",
+            "LenovoLegionToolkit.WPF/App.xaml.cs:Application_Startup",
+            "Startup begin",
+            new
+            {
+                argsCount = e.Args?.Length ?? 0,
+                isTraceEnabled = flags.IsTraceEnabled,
+                skipCompatibilityCheck = flags.SkipCompatibilityCheck,
+                minimized = flags.Minimized,
+                allowAllPowerModesOnBattery = flags.AllowAllPowerModesOnBattery,
+                disableUpdateChecker = flags.DisableUpdateChecker
+            });
+        // #endregion
+
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Flags: {flags}");
 
@@ -89,6 +105,14 @@ public partial class App
             }
             catch (Exception ex)
             {
+                // #region agent log
+                NdjsonDebugLogger.Log(
+                    "A",
+                    "LenovoLegionToolkit.WPF/App.xaml.cs:Application_Startup",
+                    "Compatibility check threw",
+                    new { exType = ex.GetType().FullName, exMessage = ex.Message });
+                // #endregion
+
                 if (Log.Instance.IsTraceEnabled)
                     Log.Instance.Trace($"Failed to check device compatibility", ex);
 
@@ -277,6 +301,19 @@ public partial class App
     {
         var exception = e.ExceptionObject as Exception;
 
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "E",
+            "LenovoLegionToolkit.WPF/App.xaml.cs:AppDomain_UnhandledException",
+            "Unhandled exception (AppDomain)",
+            new
+            {
+                isTerminating = e.IsTerminating,
+                exType = exception?.GetType().FullName,
+                exMessage = exception?.Message
+            });
+        // #endregion
+
         Log.Instance.ErrorReport("AppDomain_UnhandledException", exception ?? new Exception($"Unknown exception caught: {e.ExceptionObject}"));
         Log.Instance.Trace($"Unhandled exception occurred.", exception);
 
@@ -289,6 +326,18 @@ public partial class App
 
     private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
     {
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "E",
+            "LenovoLegionToolkit.WPF/App.xaml.cs:Application_DispatcherUnhandledException",
+            "Unhandled exception (Dispatcher)",
+            new
+            {
+                exType = e.Exception.GetType().FullName,
+                exMessage = e.Exception.Message
+            });
+        // #endregion
+
         Log.Instance.ErrorReport("Application_DispatcherUnhandledException", e.Exception);
         Log.Instance.Trace($"Unhandled exception occurred.", e.Exception);
 
@@ -304,6 +353,14 @@ public partial class App
         var isCompatible = await Compatibility.CheckBasicCompatibilityAsync();
         if (isCompatible)
             return true;
+
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "A",
+            "LenovoLegionToolkit.WPF/App.xaml.cs:CheckBasicCompatibilityAsync",
+            "Basic compatibility failed; shutting down",
+            new { shutdownCode = 201 });
+        // #endregion
 
         MessageBox.Show(Resource.IncompatibleDevice_Message, Resource.AppName, MessageBoxButton.OK, MessageBoxImage.Error);
 
@@ -323,6 +380,14 @@ public partial class App
 
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Incompatible system detected. [Vendor={mi.Vendor}, Model={mi.Model}, MachineType={mi.MachineType}, BIOS={mi.BiosVersion}]");
+
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "A",
+            "LenovoLegionToolkit.WPF/App.xaml.cs:CheckCompatibilityAsync",
+            "Full compatibility failed (unsupported device flow)",
+            new { mi.Vendor, mi.Model, mi.MachineType, mi.BiosVersion });
+        // #endregion
 
         var unsupportedWindow = new UnsupportedWindow(mi);
         unsupportedWindow.Show();
@@ -351,6 +416,14 @@ public partial class App
 
         _singleInstanceMutex = new Mutex(true, MUTEX_NAME, out var isOwned);
         _singleInstanceWaitHandle = new EventWaitHandle(false, EventResetMode.AutoReset, EVENT_NAME);
+
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "B",
+            "LenovoLegionToolkit.WPF/App.xaml.cs:EnsureSingleInstance",
+            "Single-instance check",
+            new { isOwned });
+        // #endregion
 
         if (!isOwned)
         {
