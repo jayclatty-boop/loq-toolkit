@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace LenovoLegionToolkit.Lib.Utils;
 
-internal static class NdjsonDebugLogger
+public static class NdjsonDebugLogger
 {
     // #region agent log
     private const string DebugLogPath = @"c:\LenovoLegionToolkit-master\.cursor\debug.log";
