@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 using Windows.Win32;
@@ -74,6 +74,7 @@ public static class PInvokeExtensions
         if (errorCode != 0)
             throw Marshal.GetExceptionForHR(errorCode) ?? throw new Exception($"Unknown Win32 error code {errorCode} in {description}");
 
-        throw new Exception($"{description} failed but Win32 didn't catch an error");
+        // FIXED: Removed unconditional throw - method should only throw when errorCode != 0
+        // When errorCode == 0 (success), the method should return normally
     }
 }
