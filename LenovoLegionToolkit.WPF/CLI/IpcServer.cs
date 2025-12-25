@@ -36,6 +36,14 @@ public class IpcServer(
         if (!settings.Store.CLI)
             return;
 
+        // #region agent log
+        NdjsonDebugLogger.Log(
+            "D",
+            "LenovoLegionToolkit.WPF/CLI/IpcServer.cs:StartStopIfNeededAsync",
+            "IPC server starting (CLI integration enabled)",
+            new { pipeName = LenovoLegionToolkit.CLI.Lib.Constants.PIPE_NAME });
+        // #endregion
+
         if (Log.Instance.IsTraceEnabled)
             Log.Instance.Trace($"Starting...");
 
